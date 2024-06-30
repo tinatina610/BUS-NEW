@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="location_text" type="id" />
+    <item name="map_image" type="id" />
+    <item name="find_location_button" type="id" />
+</resources>

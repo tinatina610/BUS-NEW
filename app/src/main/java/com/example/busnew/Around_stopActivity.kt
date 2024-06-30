@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : ComponentActivity() {
+class Around_stopActivity : ComponentActivity() {
     @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,11 +69,10 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-                        ScrollableContent(){
-                            // On button click, navigate to RouteActivity
-                            val intent = Intent(this@MainActivity, Around_stopActivity::class.java)
-                            startActivity(intent)
-                        }
+                    ScrollableContent1( aroundStopResult.value){
+                        val intent = Intent(this@Around_stopActivity, NewsActivity::class.java)
+                        startActivity(intent)
+                    }
 
                 }
             }
@@ -81,17 +80,19 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun ScrollableContent(onButtonClick: () -> Unit) {
+fun ScrollableContent1( aroundStopResult: String,onButtonClick: () -> Unit) {
     Column(
         modifier = Modifier
             .padding(8.dp)
             .verticalScroll(rememberScrollState())
     ) {
+        Text(text = "附近站牌 :\n")
+        Text(text = aroundStopResult)
         Button(
             onClick = onButtonClick,
             modifier = Modifier.padding(top = 16.dp)
         ) {
-            Text(text = "前往附近站牌頁")
+            Text(text = "前往最新消息頁")
         }
     }
 }

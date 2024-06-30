@@ -27,7 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : ComponentActivity() {
+class NewsActivity : ComponentActivity() {
     @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,11 +69,11 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-                        ScrollableContent(){
-                            // On button click, navigate to RouteActivity
-                            val intent = Intent(this@MainActivity, Around_stopActivity::class.java)
-                            startActivity(intent)
-                        }
+                    ScrollableContent2(tdxResult.value){
+                        // On button click, navigate to RouteActivity
+                        val intent = Intent(this@NewsActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    }
 
                 }
             }
@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun ScrollableContent(onButtonClick: () -> Unit) {
+fun ScrollableContent2(tdxResult: String,onButtonClick: () -> Unit) {
     Column(
         modifier = Modifier
             .padding(8.dp)
@@ -91,7 +91,7 @@ fun ScrollableContent(onButtonClick: () -> Unit) {
             onClick = onButtonClick,
             modifier = Modifier.padding(top = 16.dp)
         ) {
-            Text(text = "前往附近站牌頁")
+            Text(text = "前往最新消息頁")
         }
     }
 }
